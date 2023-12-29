@@ -262,6 +262,13 @@ void LCD_DisplayTemperature(void)
     strcpy(IPSource,GetIpAddress());   //Get the IP address of the device's wireless network card
     OLED_ShowString(0,0,IPSource,8);          //Send the IP address to the lower machine
   }
+  else if (IP_SWITCH == IP_DISPLAY_HOSTNAME)
+  {
+    char hostname[1024];
+    hostname[1023] = '\0';
+    gethostname(hostname, 1023);
+    OLED_ShowString(0,0,hostname,8);
+  }
   else
   {
     OLED_ShowString(0,0,CUSTOM_DISPLAY,8);          //Send the IP address to the lower machine
